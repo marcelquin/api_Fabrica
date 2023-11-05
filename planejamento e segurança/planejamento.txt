@@ -1,0 +1,42 @@
+FABRICA
+
+empresa - 
+{
+	cadastro(
+	nome
+	ração social
+	cnpj
+	endereço
+	contato
+	)
+	Fornecedor {id, cadastro, data_contrato, tempo contrato, <Material>}
+	Empresa {id, cadastro, data_contrato, tempo contrato, <Produto>}
+	
+	Material{id, nome, descrisão, fornecedor, valor, quantidade <avisos>}
+	|
+	|_{se materiais 30% para fim do estoque adicina aviso: "estoque de material
+	(nome)baixo adiquira mais"}           materiais
+	Molde{id, Material, quantidade}           |
+	pré-produto{id, nome <molde>} ------------|
+	produto{id, nome, descrisão,valor empresa, préproduto}
+	|
+	|_{lista de materiais reduz automaticamente do material a quantidade programada
+	    a partir das quantidades adicionadas}
+	estoque{id, produto, quantidade}
+	
+	       1-------n (bidirecional)
+	fornecedor - material 
+         n  -  1    
+   material - molde  
+        n      -   1 (bidirecional)		
+	produto    -  empresa
+	    1      -    1  
+	produto    -  pré-produto
+	    1      -   n  
+	estoque    -  produto
+
+	
+	
+	
+	
+}
