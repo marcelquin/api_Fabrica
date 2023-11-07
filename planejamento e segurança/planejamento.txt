@@ -24,11 +24,11 @@ empresa -
 	    a partir das quantidades adicionadas}
 	estoque{id, produto, quantidade}
 	
-	       1-------n (bidirecional)
+	       1-------n (bidirecional x)
 	fornecedor - material 
          n  -  1    
    material - molde  
-        n      -   1 (bidirecional)		
+        n      -   1 (bidirecional x)		
 	produto    -  empresa
 	    1      -    1  
 	produto    -  pré-produto
@@ -36,7 +36,13 @@ empresa -
 	estoque    -  produto
 
 	
-	
+avisos - {
+	para estoque baixo
+	     estoque sem saida
+	     fornecedor falha
+	     fornecedor com contrato vencendo
+		...
+}
 	
 	
 }
