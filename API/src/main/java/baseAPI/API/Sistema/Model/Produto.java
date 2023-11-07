@@ -23,8 +23,11 @@ public class Produto {
 
     private String descrisao;
 
-    @JoinColumn(name = "pre_Produto_Codigo")
-    private String preProdutoCodigo;
+    @JoinColumn(name = "molde_Nome")
+    private String moldeNome;
+
+    @JoinColumn(name = "molde_Codigo")
+    private String moldeCodigo;
 
     private Double valor;
 

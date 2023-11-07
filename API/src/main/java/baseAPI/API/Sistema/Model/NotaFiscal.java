@@ -28,6 +28,9 @@ public class NotaFiscal {
 
     private String empresa;
 
+    @JoinColumn(name = "razao_Social")
+    private String razaoSocial;
+
     private Long cnpj;
 
     private String endereco;

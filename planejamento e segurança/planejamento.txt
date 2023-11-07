@@ -46,3 +46,13 @@ avisos - {
 	
 	
 }
+
+pesquisas personalizadas{
+
+	empresa / fornecedor (nome, cnpj)
+	
+	material/ produto/ pré produto (codigo, nome)
+	
+	
+
+}

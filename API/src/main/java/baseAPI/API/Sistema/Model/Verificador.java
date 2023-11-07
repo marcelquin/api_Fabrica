@@ -20,10 +20,10 @@ public class Verificador {
     private Long id;
 
     @OneToMany
-    private List<Material> materiais;
+    private List<Material> materiais; //se qunatidade < x seta alerta
 
     @OneToMany
-    private List<Estoque> estoques;
+    private List<Estoque> estoques; //se qunatidade < x seta alerta
 
 
 

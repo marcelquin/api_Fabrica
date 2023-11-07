@@ -23,11 +23,11 @@ public class Fornecedor {
 
     private String nome;
     @JoinColumn(name = "razao_Social")
-    private String razaoSocial;
+    private String razaoSocial; //
 
     private String missao;
 
-    private Long cnpj;
+    private Long cnpj; //
 
     private String logradouro;
 

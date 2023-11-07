@@ -19,7 +19,7 @@ public class Material {
 
     private String nome;
 
-    private String codigo; //busca personalizada
+    private String codigo;
 
     private String descrisao;
 

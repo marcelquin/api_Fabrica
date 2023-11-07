@@ -18,6 +18,9 @@ public class Especificacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JoinColumn(name = "material_Nome")
+    private String materialNome;
+
     @JoinColumn(name = "material_Codigo")
     private String materialCodigo;
 

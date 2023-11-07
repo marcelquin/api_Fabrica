@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @Builder
 @Entity
-public class PreProduto {
+public class MoldeProduto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

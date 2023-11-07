@@ -17,6 +17,9 @@ public class Estoque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JoinColumn(name = "produto_Nome")
+    private String produtoNome;
+
     @JoinColumn(name = "produto_Codigo")
     private String produtocodigo;
 
