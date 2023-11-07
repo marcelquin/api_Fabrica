@@ -1,5 +1,6 @@
 package baseAPI.API.Sistema.Model;
 
+import baseAPI.API.Sistema.Enum.AreaAtuacao;
 import baseAPI.API.Sistema.Enum.TempoContrato;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,11 +24,14 @@ public class Fornecedor {
 
     private String nome;
     @JoinColumn(name = "razao_Social")
-    private String razaoSocial; //
+    private String razaoSocial;
 
     private String missao;
 
-    private Long cnpj; //
+    private Long cnpj;
+
+    @Enumerated
+    private AreaAtuacao areaAtuacao;
 
     private String logradouro;
 
@@ -40,6 +44,8 @@ public class Fornecedor {
     private String email;
 
     private Long telefone;
+
+    private String logoMarca;
 
     @OneToMany
     private List<Material> materiais;

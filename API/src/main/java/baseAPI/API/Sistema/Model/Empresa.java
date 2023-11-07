@@ -39,6 +39,8 @@ public class Empresa {
 
     private Long telefone;
 
+    private String logoMarca;
+
     @OneToMany
     private List<Produto> produtos;
 
