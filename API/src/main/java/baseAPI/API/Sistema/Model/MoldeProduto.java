@@ -26,5 +26,12 @@ public class MoldeProduto {
     @OneToMany
     private List<Especificacao> especificacoes;
 
+    private Double valorTotalMateriais;
+
+    public Double calValorTotal()
+    {
+        Double valor = especificacoes.stream().mapToDouble(item -> item.getMaterial().calValorPorUnitario()).sum();
+        return this.valorTotalMateriais = valor;
+    }
 
 }

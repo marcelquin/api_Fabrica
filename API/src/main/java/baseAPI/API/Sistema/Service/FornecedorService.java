@@ -46,8 +46,8 @@ public class FornecedorService {
         try{
             if(repository.existsById(id))
             {
-                Optional<Fornecedor> entidadeteste = repository.findById(id);
-                return new ResponseEntity<Fornecedor>(entidadeteste.get(), ACCEPTED);
+                Optional<Fornecedor> entidade = repository.findById(id);
+                return new ResponseEntity<Fornecedor>(entidade.get(), ACCEPTED);
             }else {
                 ResponseEntity responseEntity = new ResponseEntity<Empresa>(BAD_GATEWAY);
                 return responseEntity;
@@ -65,8 +65,8 @@ public class FornecedorService {
         try{
             if(cnpj != null)
             {
-                Optional<Fornecedor> entidadeteste = Optional.ofNullable(repository.findBycnpj(cnpj));
-                return new ResponseEntity<Fornecedor>(entidadeteste.get(), ACCEPTED);
+                Optional<Fornecedor> entidade = Optional.ofNullable(repository.findBycnpj(cnpj));
+                return new ResponseEntity<Fornecedor>(entidade.get(), ACCEPTED);
             }else {
                 ResponseEntity responseEntity = new ResponseEntity<Empresa>(BAD_GATEWAY);
                 return responseEntity;

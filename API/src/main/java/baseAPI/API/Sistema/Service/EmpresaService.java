@@ -43,8 +43,8 @@ public class EmpresaService {
         try{
             if(repository.existsById(id))
             {
-                Optional<Empresa> entidadeteste = repository.findById(id);
-                return new ResponseEntity<Empresa>(entidadeteste.get(), ACCEPTED);
+                Optional<Empresa> entidade = repository.findById(id);
+                return new ResponseEntity<Empresa>(entidade.get(), ACCEPTED);
             }else {
                 ResponseEntity responseEntity = new ResponseEntity<Empresa>(BAD_GATEWAY);
                 return responseEntity;
@@ -62,8 +62,8 @@ public class EmpresaService {
         try{
             if(cnpj != null)
             {
-                Optional<Empresa> entidadeteste = Optional.ofNullable(repository.findBycnpj(cnpj));
-                return new ResponseEntity<Empresa>(entidadeteste.get(), ACCEPTED);
+                Optional<Empresa> entidade = Optional.ofNullable(repository.findBycnpj(cnpj));
+                return new ResponseEntity<Empresa>(entidade.get(), ACCEPTED);
             }else {
                 ResponseEntity responseEntity = new ResponseEntity<Empresa>(BAD_GATEWAY);
                 return responseEntity;

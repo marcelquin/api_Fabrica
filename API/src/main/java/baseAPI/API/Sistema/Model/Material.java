@@ -1,10 +1,13 @@
 package baseAPI.API.Sistema.Model;
 
+import baseAPI.API.Sistema.Enum.UniddeMedida;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,14 +30,27 @@ public class Material {
     private String fornecedorNome;
 
     @JoinColumn(name = "fornecedor_Cnpj")
-    private String fornecedorCnpj;
+    private Long fornecedorCnpj;
 
     @JoinColumn(name = "valor_Nota")
     private Double valorNota;
 
     private  Double quantidade;
 
+    @OneToMany
+    private List<Especificacao> especificacoes;
+
+    @Enumerated
+    private UniddeMedida uniddeMedida;
+
     @JoinColumn(name = "valor_Por_Unidade")
     private Double valorPorUnitario; //setado automaticamente
 
+    public double calValorPorUnitario()
+    {
+        Double valor;
+        valor = this.valorNota / this.quantidade;
+        this.setValorPorUnitario(valor);
+        return this.valorPorUnitario;
+    }
 }

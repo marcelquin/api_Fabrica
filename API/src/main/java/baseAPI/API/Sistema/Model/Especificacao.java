@@ -18,16 +18,18 @@ public class Especificacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "material_Nome")
-    private String materialNome;
+    private String codigo;
 
-    @JoinColumn(name = "material_Codigo")
-    private String materialCodigo;
+    @ManyToOne()
+    @JoinColumn(name = "Material_Especificacao_Id")
+    private Material material;
 
     private Double quantidade;
 
     @Enumerated
     private UniddeMedida uniddeMedida;
+
+
 
 
 }
