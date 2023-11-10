@@ -27,9 +27,9 @@ public class MoldeProdutoService {
     MoldeProdutoRepository repository;
     @Autowired
     EspecificacaoRepository Erepositry;
-
     @Autowired
-    UtilService Uservice;
+    MaterialRepository Mrepository;
+
     public ResponseEntity<List<MoldeProduto>> listar()
     {
         try{
@@ -99,7 +99,6 @@ public class MoldeProdutoService {
                 {
                     Especificacao especificacao = Erepositry.findBycodigo(codigoE);
                     lista.add(especificacao);
-                    Uservice.baixaMaterial(especificacao.getMaterial().getCodigo(), especificacao.getQuantidade());
                 }
                 moldeProduto.setEspecificacoes(lista);
                 moldeProduto.setValorTotalMateriais(moldeProduto.calValorTotal());

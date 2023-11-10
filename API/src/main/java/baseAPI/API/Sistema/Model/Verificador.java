@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.util.LimitedInputStream;
 
 import java.util.List;
 
@@ -19,11 +20,13 @@ public class Verificador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    private List<Material> materiais; //se qunatidade < x seta alerta
+    private String codigo;
 
     @OneToMany
-    private List<Estoque> estoques; //se qunatidade < x seta alerta
+    private List<Material> materiais;
+
+    @OneToMany
+    private List<Produto> produtos;
 
 
 

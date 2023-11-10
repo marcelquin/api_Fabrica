@@ -41,7 +41,5 @@ public class Empresa {
 
     private String logoMarca;
 
-    @OneToMany
-    private List<Produto> produtos;
 
 }

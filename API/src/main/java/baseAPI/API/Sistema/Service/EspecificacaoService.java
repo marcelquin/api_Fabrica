@@ -89,7 +89,7 @@ public class EspecificacaoService {
                 Material material = new Material();
                 List<Especificacao> especificacaos = new ArrayList<>();
                 int cod = (int) (1001 + Math.random() * 8999);
-                String codigo = "EsMt"+cod;
+                String codigo = "EsMt_"+cod;
                 especificacao.setCodigo(codigo);
                 if(especificacaoDTO.getMaterialCodigo() != null)
                 {

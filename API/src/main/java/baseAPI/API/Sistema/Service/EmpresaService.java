@@ -2,7 +2,11 @@ package baseAPI.API.Sistema.Service;
 
 import baseAPI.API.Sistema.DTO.EmpresaDTO;
 import baseAPI.API.Sistema.Model.Empresa;
+import baseAPI.API.Sistema.Model.Notificacao;
+import baseAPI.API.Sistema.Model.Verificador;
 import baseAPI.API.Sistema.Repository.EmpresaRepository;
+import baseAPI.API.Sistema.Repository.NotificacaoRepository;
+import baseAPI.API.Sistema.Repository.VerificadorRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +27,8 @@ public class EmpresaService {
     @Autowired
     EmpresaRepository repository;
 
+    @Autowired
+    VerificadorRepository Vrepository;
     private static String caminhoImagem = "D:\\PROJETOS JAVA\\PROJETOS\\api_Fabrica\\API\\Upload\\Empresa\\";
 
     public ResponseEntity<List<Empresa>> listar()
@@ -91,6 +97,9 @@ public class EmpresaService {
                     empresa.setLogoMarca(empresa.getCnpj()+"_"+file.getOriginalFilename());
                 }
                 repository.save(empresa);
+                Verificador verificador = new Verificador();
+                verificador.setCodigo("VFD_183965");
+                Vrepository.save(verificador);
                 return new ResponseEntity<>(CREATED);
             }
             else

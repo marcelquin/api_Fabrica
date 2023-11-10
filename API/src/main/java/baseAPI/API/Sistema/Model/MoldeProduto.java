@@ -28,6 +28,8 @@ public class MoldeProduto {
 
     private Double valorTotalMateriais;
 
+
+
     public Double calValorTotal()
     {
         Double valor = especificacoes.stream().mapToDouble(item -> item.getMaterial().calValorPorUnitario()).sum();

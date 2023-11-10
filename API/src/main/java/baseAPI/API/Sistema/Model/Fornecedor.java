@@ -48,9 +48,6 @@ public class Fornecedor {
     private String logoMarca;
 
     @OneToMany
-    private List<Material> materiais;
-
-    @OneToMany
     @JoinColumn(name = "notas_Fiscais")
     private  List<NotaFiscal> notasFiscais;
 

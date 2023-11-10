@@ -26,11 +26,9 @@ public class Material {
 
     private String descrisao;
 
-    @JoinColumn(name = "fornecedor_Cnpj")
-    private String fornecedorNome;
-
-    @JoinColumn(name = "fornecedor_Cnpj")
-    private Long fornecedorCnpj;
+    @ManyToOne
+    @JoinColumn(name = "material_fornecedor_Id")
+    private Fornecedor fornecedor;
 
     @JoinColumn(name = "valor_Nota")
     private Double valorNota;
@@ -44,7 +42,7 @@ public class Material {
     private UniddeMedida uniddeMedida;
 
     @JoinColumn(name = "valor_Por_Unidade")
-    private Double valorPorUnitario; //setado automaticamente
+    private Double valorPorUnitario;
 
     public double calValorPorUnitario()
     {

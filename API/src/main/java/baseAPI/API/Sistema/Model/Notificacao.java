@@ -1,5 +1,6 @@
 package baseAPI.API.Sistema.Model;
 
+import baseAPI.API.Sistema.Enum.TipoAviso;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,27 +12,24 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
-public class Produto {
+public class Notificacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-
     private String codigo;
 
-    private String descrisao;
+    @ManyToOne
+    @JoinColumn(name = "notificacao_material_Id")
+    private Material material;
 
-    @JoinColumn(name = "molde_Nome")
-    private String moldeNome;
+    @ManyToOne
+    @JoinColumn(name = "notificacao_produto_Id")
+    private Produto produto;
 
-    @JoinColumn(name = "molde_Codigo")
-    private String moldeCodigo;
+    @Enumerated
+    private TipoAviso tipoAviso;
 
-    private Double valor; //valor material + 40%
-
-    private String imagem;
-
-    private Double estoque;
+    private String mensagem;
 }

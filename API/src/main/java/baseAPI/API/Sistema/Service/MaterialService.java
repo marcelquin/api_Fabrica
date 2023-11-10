@@ -6,8 +6,10 @@ import baseAPI.API.Sistema.Enum.UniddeMedida;
 import baseAPI.API.Sistema.Model.Empresa;
 import baseAPI.API.Sistema.Model.Fornecedor;
 import baseAPI.API.Sistema.Model.Material;
+import baseAPI.API.Sistema.Model.Verificador;
 import baseAPI.API.Sistema.Repository.FornecedorRepository;
 import baseAPI.API.Sistema.Repository.MaterialRepository;
+import baseAPI.API.Sistema.Repository.VerificadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ public class MaterialService {
     MaterialRepository repository;
     @Autowired
     FornecedorRepository Frepository;
+    @Autowired
+    VerificadorRepository Vrepository;
 
     public ResponseEntity<List<Material>> listar()
     {
@@ -114,8 +118,7 @@ public class MaterialService {
                     Fornecedor fornecedor = Frepository.findBycnpj(materialDTO.getFornecedorCnpj());
                     if(fornecedor != null)
                     {
-                        material.setFornecedorNome(fornecedor.getNome());
-                        material.setFornecedorCnpj(fornecedor.getCnpj());
+                       material.setFornecedor(fornecedor);
                     }
                     if(uniddeMedida != null)
                     {
@@ -124,6 +127,11 @@ public class MaterialService {
                 }
                 material.setValorPorUnitario(material.calValorPorUnitario());
                 repository.save(material);
+                Verificador verificador = Vrepository.findBycodigo("VFD_183965");
+                if(verificador != null) {
+                    verificador.getMateriais().add(material);
+                    Vrepository.save(verificador);
+                }
                 return new ResponseEntity<>(CREATED);
             }
             else
@@ -164,8 +172,7 @@ public class MaterialService {
                         fornecedor = Frepository.findBycnpj(materialDTO.getFornecedorCnpj());
                         if (fornecedor != null)
                         {
-                            material.setFornecedorNome(fornecedor.getNome());
-                            material.setFornecedorCnpj(fornecedor.getCnpj());
+                            material.setFornecedor(fornecedor);
                         }
                     }
                     if(materialDTO.getQuantidade() != null)
